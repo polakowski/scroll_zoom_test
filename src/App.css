@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  background-color: #cecece;
+  overflow: hidden;
+}
+
+#root {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.outer-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.workspace-wrapper {
+  position: relative;
+  width: 900px;
+  height: 600px;
+}
+
+.workspace-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0px 0px 0px 10000px #00002080;
+  z-index: 1;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.workspace-zoom {
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.workspace-scroll {
+  position: absolute;
+  transform-origin: top left;
 }
 
-.App-link {
-  color: #61dafb;
+.workspace {
+  background-repeat: repeat;
+  width: 5000px;
+  height: 5000px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.workspace::before {
+  content: '';
+  position: absolute;
+  background-color: transparent;
+  left: -1000px;
+  top: -1000px;
+  right: -1000px;
+  bottom: -1000px;
+  z-index: -1;
+}
+
+.zoom-info {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  padding: 4px;
+  background-color: white;
+}
+
+.mouse-info {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  padding: 4px;
+  background-color: white;
+}
+
+.transform-origin-marker {
+  display: none;
+
+  position: absolute;
+  background-color: red;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: hard-light;
 }
